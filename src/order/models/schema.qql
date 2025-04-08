@@ -1,0 +1,46 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  userId: String!
+  userName: String!
+  firstName: String!
+}
+
+type File {
+  path: String!
+  telegramApiFileUrl: String!
+}
+
+type OrderStatus {
+  id: Int!
+  value: String!
+}
+
+type Description {
+  qty: String!
+  size: String
+}
+
+type Order {
+  id: String!
+  userId: String!
+  userName: String!
+  firstName: String!
+  type: String!
+  orderStatus: OrderStatus!
+  file: File!
+  itemUrl: String
+  description: Description
+}
+
+type Orders {
+  orders: [Order!]!
+}
+
+type Query {
+  Order(userId: String!, id: String!): Order!
+  User(userId: String!): User!
+  Orders(userId: String!): Orders!
+}
