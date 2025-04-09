@@ -9,13 +9,11 @@ export class OrderResolver {
   constructor(private orderService: OrderService) {}
 
   @Query(() => Order)
-  async Order(@Args('userId') userId: string, @Args('id') id: string) {
-    return await this.orderService.getOrder(userId, id);
-  }
-
-  @Query(() => User)
-  async User(@Args('userId') userId: string) {
-    return await this.orderService.getUser(userId);
+  async Order(
+    @Args('userId') userId: string,
+    @Args('orderId') orderId: string,
+  ) {
+    return await this.orderService.getOrder(userId, orderId);
   }
 
   @Query(() => Orders)

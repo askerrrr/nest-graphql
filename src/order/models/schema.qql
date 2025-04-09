@@ -2,12 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type User {
-  userId: String!
-  userName: String!
-  firstName: String!
-}
-
 type File {
   path: String!
   telegramApiFileUrl: String!
@@ -39,8 +33,15 @@ type Orders {
   orders: [Order!]!
 }
 
+type User {
+  userId: String!
+  userName: String!
+  firstName: String!
+  orders(userId: String!, orderId: String!): Orders!
+}
+
 type Query {
-  Order(userId: String!, id: String!): Order!
   User(userId: String!): User!
+  Order(userId: String!, orderId: String!): Order!
   Orders(userId: String!): Orders!
 }

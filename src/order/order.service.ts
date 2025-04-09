@@ -1,27 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { UserCollectionService } from '../database/user.collection/user.collection.service';
+import { OrdersCollectionService } from 'src/database/orderCollection/order.collection.service';
 
 @Injectable()
 export class OrderService {
-  constructor(private userCollection: UserCollectionService) {}
-
-  async getUser(userId: string) {
-    return await this.userCollection.getUser(userId);
-  }
+  constructor(private orderCollection: OrdersCollectionService) {}
 
   async getOrder(userId: string, orderId: string) {
-    var user = await this.userCollection.getUser(userId);
-    var { orders } = user;
-
-    var order = orders.find((order) => order.id == orderId);
-
-    return order;
+    return await this.orderCollection.getOrder(userId, orderId);
   }
 
   async getOrders(userId: string) {
-    var user = await this.userCollection.getUser(userId);
-    var { orders } = user;
-
-    return { orders };
+    return await this.orderCollection.getOrders(userId);
   }
 }
