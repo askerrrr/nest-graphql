@@ -2,12 +2,25 @@ import { Module } from '@nestjs/common';
 import { UserCollectionService } from './user.collection/user.collection.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './user.collection/schemas/user.schema';
-import { Orders, OrdersSchema } from './orderCollection/schemas/orders.schema';
-import { OrdersCollectionService } from './orderCollection/order.collection.service';
+import { Orders, OrdersSchema } from './order.collection/schemas/orders.schema';
+import { OrdersCollectionService } from './order.collection/order.collection.service';
+import {
+  Item,
+  ItemSchema,
+} from './item.collection/schemas/item.collection.schema';
+import { ItemCollectionService } from './item.collection/item.collection.service';
 
 @Module({
-  providers: [UserCollectionService, OrdersCollectionService],
-  exports: [UserCollectionService, OrdersCollectionService],
+  providers: [
+    UserCollectionService,
+    OrdersCollectionService,
+    ItemCollectionService,
+  ],
+  exports: [
+    UserCollectionService,
+    OrdersCollectionService,
+    ItemCollectionService,
+  ],
   imports: [
     MongooseModule.forFeature(
       [{ name: User.name, schema: UserSchema }],
@@ -15,6 +28,10 @@ import { OrdersCollectionService } from './orderCollection/order.collection.serv
     ),
     MongooseModule.forFeature(
       [{ name: Orders.name, schema: OrdersSchema }],
+      'main',
+    ),
+    MongooseModule.forFeature(
+      [{ name: Item.name, schema: ItemSchema }],
       'main',
     ),
   ],

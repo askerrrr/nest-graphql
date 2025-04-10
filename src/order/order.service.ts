@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { UserCollectionService } from '../database/user.collection/user.collection.service';
-import { OrdersCollectionService } from 'src/database/orderCollection/order.collection.service';
+import { OrdersCollectionService } from 'src/database/order.collection/order.collection.service';
 
 @Injectable()
 export class OrderService {

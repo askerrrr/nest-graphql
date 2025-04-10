@@ -1,3 +1,4 @@
+import { Description } from './description.model';
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 
 @ObjectType()
@@ -16,14 +17,6 @@ class OrderStatus {
 
   @Field()
   value: string;
-}
-
-@ObjectType()
-class Description {
-  @Field()
-  qty: string;
-  @Field({ nullable: true })
-  size?: string;
 }
 
 @ObjectType()

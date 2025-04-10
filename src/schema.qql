@@ -2,6 +2,11 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Description {
+  qty: String!
+  size: String
+}
+
 type File {
   path: String!
   telegramApiFileUrl: String!
@@ -10,11 +15,6 @@ type File {
 type OrderStatus {
   id: Int!
   value: String!
-}
-
-type Description {
-  qty: String!
-  size: String
 }
 
 type Order {
@@ -37,11 +37,32 @@ type User {
   userId: String!
   userName: String!
   firstName: String!
-  orders(userId: String!, orderId: String!): Orders!
+  orders(userId: String!): Orders!
+}
+
+type ItemData {
+  id: String!
+  price: String!
+  purchased: Int!
+  delivered: Int!
+  description: Description!
+  url: String!
+}
+
+type ItemOrder {
+  id: String!
+  totalSum: String!
+  items: [ItemData!]!
+}
+
+type Items {
+  userId: String!
+  orders: [ItemOrder!]!
 }
 
 type Query {
   User(userId: String!): User!
   Order(userId: String!, orderId: String!): Order!
   Orders(userId: String!): Orders!
+  Items(userId: String!, orderId: String!): Items!
 }

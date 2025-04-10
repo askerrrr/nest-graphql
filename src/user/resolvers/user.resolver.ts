@@ -17,10 +17,7 @@ export class UserResolver {
   }
 
   @ResolveField('orders', () => Orders)
-  async Orders(
-    @Args('userId') userId: string,
-    @Args('orderId') orderId: string,
-  ) {
+  async Orders(@Args('userId') userId: string) {
     return await this.orderService.getOrders(userId);
   }
 }

@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common';
-import { UserResolver } from './resolvers/user.resolver';
-import { OrderModule } from 'src/order/order.module';
+import { GraphQLModule } from '@nestjs/graphql';
+
 import { UserService } from './user.service';
+import { OrderModule } from 'src/order/order.module';
+import { UserResolver } from './resolvers/user.resolver';
 import { DatabaseModule } from 'src/database/database.module';
 
 @Module({
